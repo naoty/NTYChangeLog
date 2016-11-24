@@ -4,7 +4,7 @@ module NChangeLog
 
     def initialize(name, changes)
       @name = name
-      @changes = change
+      @changes = changes
     end
   end
 end
