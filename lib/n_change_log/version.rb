@@ -1,3 +1,10 @@
 module NChangeLog
-  VERSION = "0.1.0"
+  class Version
+    attr_reader :number, :issues
+
+    def initialize(number, issues)
+      @number = number
+      @issues = issues
+    end
+  end
 end
