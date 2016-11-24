@@ -14,7 +14,7 @@ module NChangeLog
     end
 
     def parse_issues(text)
-      result = text.split(/^### \[(.+)\]\(.+\)$/)[1..-1].map(&:strip)
+      result = text.split(/^### (.+)$/)[1..-1].map(&:strip)
       Hash[*result].map do |name, change_group_texts|
         change_groups = parse_change_groups(change_group_texts)
         Issue.new(name, change_groups)
