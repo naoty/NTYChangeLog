@@ -6,6 +6,10 @@ module NChangeLog
       @name = name
       @change_groups = change_groups
     end
+
+    def to_s
+      (["### #{name}"] + change_groups.map(&:to_s)).join("\n\n")
+    end
   end
 end
 

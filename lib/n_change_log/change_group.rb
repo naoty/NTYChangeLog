@@ -6,6 +6,10 @@ module NChangeLog
       @name = name
       @changes = changes
     end
+
+    def to_s
+      (["#### #{name}"] + changes).join("\n")
+    end
   end
 end
 

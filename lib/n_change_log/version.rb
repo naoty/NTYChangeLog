@@ -6,5 +6,9 @@ module NChangeLog
       @number = number
       @issues = issues
     end
+
+    def to_s
+      (["## #{number}"] + issues.map(&:to_s)).join("\n\n")
+    end
   end
 end
