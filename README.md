@@ -1,12 +1,12 @@
-# n_change_log
+# NTYChangeLog
 
 ## Usage
 
 ```ruby
-require "n_change_log"
+require "nty_change_log"
 
 text = File.read("./CHANGELOG.md")
-change_log = NChangeLog::Parser.new.parse(text)
+change_log = NTYChangeLog::Parser.new.parse(text)
 ```
 
 ## Example
@@ -18,7 +18,7 @@ This parses texts like following.
 
 ## 1.0.1
 
-### [#3](https://github.com/naoty/n_change_log/pull/3)
+### [#3](https://github.com/naoty/nty_change_log/pull/3)
 
 #### Change
 * Change the name of this rubygem.
@@ -29,12 +29,12 @@ This parses texts like following.
 
 ## 1.0.0
 
-### [#2](https://github.com/naoty/n_change_log/pull/2)
+### [#2](https://github.com/naoty/nty_change_log/pull/2)
 
 #### Add
 * Parse change groups.
 
-### [#1](https://github.com/naoty/n_change_log/pull/1)
+### [#1](https://github.com/naoty/nty_change_log/pull/1)
 
 #### Add
 * Parse change logs in my style.

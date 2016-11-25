@@ -1,4 +1,4 @@
-module NChangeLog
+module NTYChangeLog
   class Version
     attr_reader :number, :issues
 

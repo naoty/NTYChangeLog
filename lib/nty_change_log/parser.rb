@@ -1,4 +1,4 @@
-module NChangeLog
+module NTYChangeLog
   class Parser
     def parse(text)
       versions = parse_versions(text.strip)

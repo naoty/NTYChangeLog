@@ -1,4 +1,4 @@
-module NChangeLog
+module NTYChangeLog
   class Issue
     attr_reader :name, :change_groups
 

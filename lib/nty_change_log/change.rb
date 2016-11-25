@@ -1,4 +1,4 @@
-module NChangeLog
+module NTYChangeLog
   class Change
     attr_reader :description
 

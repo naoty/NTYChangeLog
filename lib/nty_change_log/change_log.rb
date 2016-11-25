@@ -1,4 +1,4 @@
-module NChangeLog
+module NTYChangeLog
   class ChangeLog
     attr_reader :versions
 
