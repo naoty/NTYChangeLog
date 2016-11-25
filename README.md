@@ -1,18 +1,5 @@
 # NTYChangeLog
 
-## Usage
-
-```ruby
-require "nty_change_log"
-
-text = File.read("./CHANGELOG.md")
-change_log = NTYChangeLog::Parser.new.parse(text)
-```
-
-## Example
-
-This parses texts like following.
-
 ```markdown
 # Change Log
 
@@ -38,6 +25,15 @@ This parses texts like following.
 
 #### Add
 * Parse change logs in my style.
+```
+
+## Usage
+
+```ruby
+require "nty_change_log"
+
+text = File.read("./CHANGELOG.md")
+change_log = NTYChangeLog::Parser.new.parse(text)
 ```
 
 ## License
