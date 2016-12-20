@@ -6,7 +6,7 @@ module NTYChangeLog
     end
 
     def parse_versions(text)
-      result = text.split(/^## (\d+\.\d+\.\d+)$/)[1..-1].map(&:strip)
+      result = text.split(/^## (\w+\.\w+\.\w+)$/)[1..-1].map(&:strip)
       Hash[*result].map do |number, issue_texts|
         issues = parse_issues(issue_texts)
         Version.new(number, issues)
@@ -37,4 +37,3 @@ module NTYChangeLog
     end
   end
 end
-

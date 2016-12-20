@@ -85,7 +85,7 @@ describe NTYChangeLog::Parser do
         #### Dummy1
         * dummy1
 
-        ## 2.0.0
+        ## x.y.z
 
         ### #2
 
@@ -102,8 +102,7 @@ describe NTYChangeLog::Parser do
     it "returns Versions which have numbers" do
       versions = parser.parse_versions(text)
       numbers = versions.map(&:number)
-      expect(numbers).to eq %w(1.0.0 2.0.0)
+      expect(numbers).to eq %w(1.0.0 x.y.z)
     end
   end
 end
-
