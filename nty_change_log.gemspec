@@ -5,7 +5,7 @@ require "nty_change_log/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "nty_change_log"
-  spec.version       = "0.1.0"
+  spec.version       = "0.1.1"
   spec.authors       = ["Naoto Kaneko"]
   spec.email         = ["naoty.k@gmail.com"]
 
