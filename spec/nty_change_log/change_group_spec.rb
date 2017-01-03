@@ -4,8 +4,8 @@ describe NTYChangeLog::ChangeGroup do
   describe "#to_s" do
     let(:changes) do
       [
-        NTYChangeLog::Change.new("dummy1"),
-        NTYChangeLog::Change.new("dummy2"),
+        NTYChangeLog::Change.new("dummy1", nil),
+        NTYChangeLog::Change.new("dummy2", nil),
       ]
     end
 
@@ -15,7 +15,7 @@ describe NTYChangeLog::ChangeGroup do
 
     it "returns a text representing the receiver" do
       text = <<-EOS.strip_heredoc.strip
-        #### Dummy
+        ### Dummy
         * dummy1
         * dummy2
       EOS
@@ -23,4 +23,3 @@ describe NTYChangeLog::ChangeGroup do
     end
   end
 end
-

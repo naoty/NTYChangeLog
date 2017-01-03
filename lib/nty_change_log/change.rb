@@ -1,14 +1,18 @@
 module NTYChangeLog
   class Change
-    attr_reader :description
+    attr_reader :description, :issue
 
-    def initialize(description)
+    def initialize(description, issue)
       @description = description
+      @issue = issue
     end
 
     def to_s
-      "* #{description}"
+      if issue == nil
+        "* #{description}"
+      else
+        "* #{description} #{issue}"
+      end
     end
   end
 end
-

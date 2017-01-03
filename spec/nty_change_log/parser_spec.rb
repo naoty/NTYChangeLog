@@ -8,7 +8,7 @@ describe NTYChangeLog::Parser do
   describe "#parse_changes" do
     let(:text) do
       return <<-EOS.strip_heredoc
-        * dummy1
+        * dummy1 [#1](https://github.com/naoty/nty_change_log/pulls/1)
         * dummy2
       EOS
     end
@@ -23,15 +23,21 @@ describe NTYChangeLog::Parser do
       descriptions = changes.map(&:description)
       expect(descriptions).to eq %w(dummy1 dummy2)
     end
+
+    it "returns Changes which have issue" do
+      changes = parser.parse_changes(text)
+      issue_numbers = changes.map(&:issue).compact.map(&:number)
+      expect(issue_numbers).to eq [1]
+    end
   end
 
   describe "#parse_change_groups" do
     let(:text) do
       return <<-EOS.strip_heredoc
-        #### Dummy1
+        ### Dummy1
         * dummy1
 
-        #### Dummy2
+        ### Dummy2
         * dummy2
       EOS
     end
@@ -48,48 +54,17 @@ describe NTYChangeLog::Parser do
     end
   end
 
-  describe "#parse_issues" do
-    let(:text) do
-      return <<-EOS.strip_heredoc
-        ### #1
-
-        #### Dummy1
-        * dummy1
-
-        ### #2
-
-        #### Dummy2
-        * dummy2
-      EOS
-    end
-
-    it "returns Issues" do
-      issues = parser.parse_issues(text)
-      expect(issues.count).to eq 2
-    end
-
-    it "returns Issues which have names" do
-      issues = parser.parse_issues(text)
-      names = issues.map(&:name)
-      expect(names).to eq %w(#1 #2)
-    end
-  end
-
   describe "#parse_versions" do
     let(:text) do
       return <<-EOS.strip_heredoc
         ## 1.0.0
 
-        ### #1
-
-        #### Dummy1
+        ### Dummy1
         * dummy1
 
         ## x.y.z
 
-        ### #2
-
-        #### Dummy2
+        ### Dummy2
         * dummy2
       EOS
     end

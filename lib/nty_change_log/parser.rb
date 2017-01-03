@@ -7,22 +7,14 @@ module NTYChangeLog
 
     def parse_versions(text)
       result = text.split(/^## (\w+\.\w+\.\w+)$/)[1..-1].map(&:strip)
-      Hash[*result].map do |number, issue_texts|
-        issues = parse_issues(issue_texts)
-        Version.new(number, issues)
-      end
-    end
-
-    def parse_issues(text)
-      result = text.split(/^### (.+)$/)[1..-1].map(&:strip)
-      Hash[*result].map do |name, change_group_texts|
+      Hash[*result].map do |number, change_group_texts|
         change_groups = parse_change_groups(change_group_texts)
-        Issue.new(name, change_groups)
+        Version.new(number, change_groups)
       end
     end
 
     def parse_change_groups(text)
-      result = text.split(/^#### (.+)$/)[1..-1].map(&:strip)
+      result = text.split(/^### (.+)$/)[1..-1].map(&:strip)
       Hash[*result].map do |name, change_texts|
         changes = parse_changes(change_texts)
         ChangeGroup.new(name, changes)
@@ -30,9 +22,15 @@ module NTYChangeLog
     end
 
     def parse_changes(text)
-      result = text.split(/^\*\s*(.+)$/).map(&:strip).reject(&:empty?)
-      result.map do |description|
-        Change.new(description)
+      rows = text.split("\n").map(&:strip)
+      rows.map do |row|
+        match = row.match(/\*\s+(?<description>\S+)(\s+\[#(?<number>\d+)\]\((?<url>.+)\))?$/)
+        if match[:number] == nil
+          Change.new(match[:description], nil)
+        else
+          issue = Issue.new(match[:number].to_i, match[:url])
+          Change.new(match[:description], issue)
+        end
       end
     end
   end

@@ -8,8 +8,7 @@ module NTYChangeLog
     end
 
     def to_s
-      (["#### #{name}"] + changes).join("\n")
+      (["### #{name}"] + changes).join("\n")
     end
   end
 end
-

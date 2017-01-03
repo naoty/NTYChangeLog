@@ -1,31 +1,14 @@
 module NTYChangeLog
   class Version
-    attr_reader :number, :issues
+    attr_reader :number, :change_groups
 
-    def initialize(number, issues)
+    def initialize(number, change_groups)
       @number = number
-      @issues = issues
+      @change_groups = change_groups
     end
 
     def to_s
-      (["## #{number}"] + issues.map(&:to_s)).join("\n\n")
-    end
-
-    def summary
-      change_groups = {}
-
-      issues.each do |issue|
-        issue.change_groups.each do |change_group|
-          change_groups[change_group.name] ||= []
-          change_groups[change_group.name] += change_group.changes
-        end
-      end
-
-      change_group_texts = change_groups.map do |change_group_name, changes|
-        (["#### #{change_group_name}"] + changes.map(&:to_s)).join("\n")
-      end
-
-      (["## #{number}"] + change_group_texts).join("\n\n")
+      (["## #{number}"] + change_groups.map(&:to_s)).join("\n\n")
     end
   end
 end

@@ -1,15 +1,14 @@
 module NTYChangeLog
   class Issue
-    attr_reader :name, :change_groups
+    attr_reader :number, :url
 
-    def initialize(name, change_groups)
-      @name = name
-      @change_groups = change_groups
+    def initialize(number, url)
+      @number = number
+      @url = url
     end
 
     def to_s
-      (["### #{name}"] + change_groups.map(&:to_s)).join("\n\n")
+      "[##{number}](#{url})"
     end
   end
 end
-
