@@ -8,7 +8,7 @@ describe NTYChangeLog::Parser do
   describe "#parse_changes" do
     let(:text) do
       return <<-EOS.strip_heredoc
-        * dummy1 [#1](https://github.com/naoty/nty_change_log/pulls/1)
+        * dummy1 dummy1 [#1](https://github.com/naoty/nty_change_log/pulls/1)
         * dummy2
       EOS
     end
@@ -21,7 +21,7 @@ describe NTYChangeLog::Parser do
     it "returns Changes which have descriptions" do
       changes = parser.parse_changes(text)
       descriptions = changes.map(&:description)
-      expect(descriptions).to eq %w(dummy1 dummy2)
+      expect(descriptions).to eq ["dummy1 dummy1", "dummy2"]
     end
 
     it "returns Changes which have issue" do

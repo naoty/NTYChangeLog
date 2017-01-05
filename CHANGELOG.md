@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.2.1
+
+### Fix
+* Fix `parse_changes` to parse changes including spaces.
+
 ## 0.2.0
 
 ### Change

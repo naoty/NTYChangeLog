@@ -24,12 +24,13 @@ module NTYChangeLog
     def parse_changes(text)
       rows = text.split("\n").map(&:strip)
       rows.map do |row|
-        match = row.match(/\*\s+(?<description>\S+)(\s+\[#(?<number>\d+)\]\((?<url>.+)\))?$/)
-        if match[:number] == nil
-          Change.new(match[:description], nil)
-        else
+        if match = row.match(/\[#(?<number>\d+)\]\((?<url>\S+)\)/)
           issue = Issue.new(match[:number].to_i, match[:url])
-          Change.new(match[:description], issue)
+          description = row.gsub(/\*\s*(.+)\s+\[#\d+\]\(\S+\)$/) { $1 }
+          Change.new(description, issue)
+        else
+          description = row.gsub(/\*\s*(.+)$/) { $1 }
+          Change.new(description, nil)
         end
       end
     end
