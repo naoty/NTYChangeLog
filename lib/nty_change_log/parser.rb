@@ -6,10 +6,10 @@ module NTYChangeLog
     end
 
     def parse_versions(text)
-      result = text.split(/^## (\w+\.\w+\.\w+)$/)[1..-1].map(&:strip)
-      Hash[*result].map do |number, change_group_texts|
+      result = text.split(/^## (.+)$/)[1..-1].map(&:strip)
+      Hash[*result].map do |name, change_group_texts|
         change_groups = parse_change_groups(change_group_texts)
-        Version.new(number, change_groups)
+        Version.new(name, change_groups)
       end
     end
 

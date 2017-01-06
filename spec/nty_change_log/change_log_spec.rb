@@ -8,8 +8,8 @@ describe NTYChangeLog::ChangeLog do
 
     let(:versions) do
       [
-        NTYChangeLog::Version.new("1.0.0", change_groups1),
-        NTYChangeLog::Version.new("2.0.0", change_groups2),
+        NTYChangeLog::Version.new("Unreleased", change_groups1),
+        NTYChangeLog::Version.new("1.0.0", change_groups2),
       ]
     end
 
@@ -45,12 +45,12 @@ describe NTYChangeLog::ChangeLog do
       text = <<-EOS.strip_heredoc.strip
         # Change Log
 
-        ## 1.0.0
+        ## Unreleased
 
         ### Dummy1
         * dummy1 [#1](https://github.com/naoty/nty_change_log/pulls/1)
 
-        ## 2.0.0
+        ## 1.0.0
 
         ### Dummy2
         * dummy2

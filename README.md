@@ -28,7 +28,7 @@ text = File.read("./CHANGELOG.md")
 change_log = NTYChangeLog::Parser.new.parse(text)
 
 version = change_log.versions.first
-version.number #=> "1.0.1"
+version.name #=> "1.0.1"
 
 change_group = version.change_groups.first
 change_group.label #=> "Change"

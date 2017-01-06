@@ -57,12 +57,12 @@ describe NTYChangeLog::Parser do
   describe "#parse_versions" do
     let(:text) do
       return <<-EOS.strip_heredoc
-        ## 1.0.0
+        ## Unreleased
 
         ### Dummy1
         * dummy1
 
-        ## x.y.z
+        ## 1.0.0
 
         ### Dummy2
         * dummy2
@@ -76,8 +76,8 @@ describe NTYChangeLog::Parser do
 
     it "returns Versions which have numbers" do
       versions = parser.parse_versions(text)
-      numbers = versions.map(&:number)
-      expect(numbers).to eq %w(1.0.0 x.y.z)
+      numbers = versions.map(&:name)
+      expect(numbers).to eq %w(Unreleased 1.0.0)
     end
   end
 end
