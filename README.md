@@ -5,16 +5,16 @@
 
 ## 1.0.1
 
-### Change
+### Changed
 * Change the name of this rubygem. [#3](https://github.com/naoty/nty_change_log/pull/3)
 * Divide a large methods into some small methods. [#3](https://github.com/naoty/nty_change_log/pull/3)
 
-### Fix
+### Fixed
 * Fix some bugs. [#3](https://github.com/naoty/nty_change_log/pull/3)
 
 ## 1.0.0
 
-### Add
+### Added
 * Parse change groups. [#2](https://github.com/naoty/nty_change_log/pull/2)
 * Parse change logs in my style. [#1](https://github.com/naoty/nty_change_log/pull/1)
 ```
