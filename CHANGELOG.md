@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.2
+
 ### Fixed
 * Fix `parse_versions` to parse the name of the version in any format.
 
