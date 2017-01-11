@@ -1,4 +1,5 @@
 # NTYChangeLog
+[![Gem Version](https://badge.fury.io/rb/nty_change_log.svg)](https://badge.fury.io/rb/nty_change_log)
 
 ```markdown
 # Change Log
