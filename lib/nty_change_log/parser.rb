@@ -6,6 +6,7 @@ module NTYChangeLog
     end
 
     def parse_versions(text)
+      return [] if text.empty?
       result = text.split(/^## (.+)$/)[1..-1].map(&:strip)
       Hash[*result].map do |name, change_group_texts|
         change_groups = parse_change_groups(change_group_texts)
@@ -14,6 +15,7 @@ module NTYChangeLog
     end
 
     def parse_change_groups(text)
+      return [] if text.empty?
       result = text.split(/^### (.+)$/)[1..-1].map(&:strip)
       Hash[*result].map do |name, change_texts|
         changes = parse_changes(change_texts)
@@ -22,6 +24,7 @@ module NTYChangeLog
     end
 
     def parse_changes(text)
+      return [] if text.empty?
       rows = text.split("\n").map(&:strip)
       rows.map do |row|
         if match = row.match(/\[#(?<number>\d+)\]\((?<url>\S+)\)/)

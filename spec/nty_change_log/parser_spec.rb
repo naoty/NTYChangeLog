@@ -79,5 +79,19 @@ describe NTYChangeLog::Parser do
       numbers = versions.map(&:name)
       expect(numbers).to eq %w(Unreleased 1.0.0)
     end
+
+    context "when a version has no change groups" do
+      let(:text) do
+        return <<-EOS.strip_heredoc
+          ## Unreleased
+        EOS
+      end
+
+      it "returns a Version that has empty change_groups" do
+        version = parser.parse_versions(text).first
+        expect(version.name).to eq "Unreleased"
+        expect(version.change_groups.count).to eq 0
+      end
+    end
   end
 end

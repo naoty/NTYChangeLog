@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Fixed
+* Fix some methods to parse texts that have no change groups. 
+
 ## 0.2.2
 
 ### Fixed
